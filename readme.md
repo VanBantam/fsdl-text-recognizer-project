@@ -53,6 +53,10 @@ Note that if you do cache your credentials, we recommend you delete this token a
 
 Run `pipenv install --dev` to install all required packages into a virtual environment.
 
+Or run this...
+`pipenv --python `which python3``
+https://github.com/pypa/pipenv/issues/3232
+
 Make sure to precede all commands with `pipenv run` from now on, to make sure that you are using the correct environment.
 Or, you could run `pipenv shell` to activate the environment in your terminal session, instead.
 Remember to do that in every terminal session you start.
