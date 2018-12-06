@@ -67,3 +67,24 @@ Now you should be setup for the labs. The instructions for each lab are in readm
 
 You will notice that there are solutions for all the labs right here in the repo, too.
 If you get stuck, you are welcome to take a look!
+
+
+
+## dealing with python environment issues
+https://stackoverflow.com/questions/49699244/customize-module-search-path-pythonpath-via-pipenv
+I'm not sure there's a perfect solution for this, but in the interest of being explicit rather than implicit (PEP 20), I've decided to check in a file that needs to be sourced before running any script. This is one extra manual step but you can put this in a Makefile for instance.
+
+env.sh
+
+export PYTHONPATH=${PYTHONPATH}:${PWD}
+Makefile
+
+bar:
+    source env.sh && pipenv run python scripts/bar.py
+.PHONY: migrate
+The solution is a bit similar to the approach Go takes with its GOPATH.
+
+I think the other solutions are not as good:
+
+pipenv aims to solve dependencies, I could be wrong but I did not find anything related to the problem of the PYTHONPATH.
+Linking folders won't scale really well if you start having other scripts folder.
